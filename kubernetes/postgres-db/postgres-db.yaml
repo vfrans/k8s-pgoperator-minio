@@ -1,0 +1,31 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: team-cluster
+  namespace: default
+spec:
+  teamId: "team"
+  volume:
+    size: 1Gi
+    storageClass: postgres-storageclass
+  numberOfInstances: 1
+
+  databases:
+    dbtest: usertest
+
+  patroni:
+    pg_hba:
+      - host all all all md5
+
+  postgresql:
+    version: "11"
+    parameters:
+      shared_buffers: "256MB"
+      log_min_duration_statement: "1000"
+      log_statement: "ddl"
+      log_connections: "on"
+      log_disconnections: "on"
+      log_checkpoints: "on"
+      checkpoint_timeout: "5min"
+      max_connections: "500"
+      wal_log_hints: "on"

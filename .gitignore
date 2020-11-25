@@ -1,2 +1,6 @@
 .idea
 .idea/*
+venv_kubespray
+/inventory/artifacts/
+/inventory/credentials/
+/install_kubernetes.retry

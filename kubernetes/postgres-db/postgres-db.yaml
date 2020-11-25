@@ -8,7 +8,7 @@ spec:
   volume:
     size: 1Gi
     storageClass: postgres-storageclass
-  numberOfInstances: 1
+  numberOfInstances: 3
 
   databases:
     dbtest: usertest

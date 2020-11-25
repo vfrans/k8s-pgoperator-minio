@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pod-var-custom
+data:
+  BACKUP_SCHEDULE: "0 */12 * * *"
+  USE_WALG_BACKUP: "true"
+  USE_WALG_RESTORE: "true"
+  BACKUP_NUM_TO_RETAIN: "14"
+  AWS_ACCESS_KEY_ID: "**"
+  AWS_SECRET_ACCESS_KEY: "**"
+  AWS_ENDPOINT: "s3.eu-west-1.amazonaws.com"
+  AWS_REGION: "eu-west-1"
+  WAL_S3_BUCKET: "test-evs-wal"
+  WALG_DOWNLOAD_CONCURRENCY: "1"

@@ -12,6 +12,7 @@
       with_items:
         - /db
         - /minio
+        - /minio/testbucket
     - name: Install nfs-utils
       yum:
         name: nfs-utils

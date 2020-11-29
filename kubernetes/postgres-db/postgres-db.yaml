@@ -9,6 +9,25 @@ spec:
     size: 1Gi
     storageClass: postgres-storageclass
   numberOfInstances: 3
+  sidecars:
+    - name: "minio"
+      image: "vfrans/minio-nas:1.0"
+      env:
+        - name: MINIO_ACCESS_KEY
+          value: "admin"
+        - name: MINIO_SECRET_KEY
+          value: "password"
+        - name: MINIO_DIR
+          value: "/minio"
+  additionalVolumes:
+    - name: pgbak
+      mountPath: /minio
+      targetContainers: ["minio"]
+      volumeSource:
+        hostPath:
+          Path: /minio
+          Type: Directory
+
 
   databases:
     dbtest: usertest

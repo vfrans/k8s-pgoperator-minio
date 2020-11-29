@@ -29,6 +29,16 @@ spec:
       labels:
         app: minio
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: spilo-role
+                    operator: In
+                    values:
+                      - master
+              topologyKey: "kubernetes.io/hostname"
       containers:
         - env:
             - name: MINIO_ACCESS_KEY
